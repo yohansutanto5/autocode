@@ -1,0 +1,23 @@
+model: Pet
+fields:
+  - name: ID
+    type: int
+    binding: required
+    constraint: primaryKey;autoIncrement
+  - name: Stupid
+    type: string
+    binding: required
+    constraint: primaryKey;autoIncrement
+  - name: Arm
+    type: string
+    binding: none
+    constraint: notNull
+  - name: Isfurry
+    type: bool
+    binding: none
+    constraint: notNull
+routers:
+  - method: get
+    path: /hello
+  - method: post
+    path: /insert

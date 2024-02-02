@@ -1,0 +1,30 @@
+package db
+
+import (
+	"app/model"
+	"app/pkg/error"
+)
+
+func (d *DataStore) GetList{.model}() ({.model}s []model.{.model}, err *error.Error) {
+	e := d.Db.Find(&{.model}s).Error
+	err.ParseMysqlError(e)
+	return
+}
+
+func (d *DataStore) Insert{.model}({.model} *model.{.model}) (err *error.Error) {
+	e := d.Db.Create({.model}).Error
+	err.ParseMysqlError(e)
+	return
+}
+
+func (d *DataStore) Delete{.model}ByID(id int) (err *error.Error) {
+	e := d.Db.Where("id = ?", id).Delete(&model.{.model}{}).Error
+	err.ParseMysqlError(e)
+	return
+}
+
+func (d *DataStore) Update{.model}({.model} *model.{.model}) (err *error.Error) {
+	e := d.Db.Save(&{.model}).Error
+	err.ParseMysqlError(e)
+	return
+}

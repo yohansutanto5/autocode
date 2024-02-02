@@ -1,0 +1,31 @@
+package service
+
+import (
+	"app/db"
+	"app/model"
+	"app/pkg/error"
+)
+
+// {.model}Service defines the interface for managing {.model}s.
+type {.model}Service interface {
+	Insert({.model} *model.{.model}) *error.Error
+	GetList() ([]model.{.model}, *error.Error)
+}
+
+type {.model}ServiceImpl struct {
+	db *db.DataStore
+}
+
+func New{.model}Service(db *db.DataStore) {.model}Service {
+	return &{.model}ServiceImpl{db: db}
+}
+
+// Function Implementation
+
+func (s {.model}ServiceImpl) GetList() ([]model.{.model}, *error.Error) {
+	return s.db.GetList{.model}()
+}
+
+func (s *{.model}ServiceImpl) Insert({.model} *model.{.model}) *error.Error {
+	return s.db.Insert{.model}({.model})
+}

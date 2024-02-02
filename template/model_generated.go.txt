@@ -1,0 +1,13 @@
+package model
+
+type {.model} struct {
+	{.model_definition}
+}
+
+// DTO input and func to populate it
+type {.model}Input struct {
+	{.model_input}
+}
+func (m *{.model}) PopulateFromDTOInput(input {.model}Input) {
+  {.PopulateFromDTOInput}
+}
